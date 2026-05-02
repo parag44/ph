@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Philippines Trip app icon">
+  <rect width="512" height="512" rx="112" fill="#1f7a5a"/>
+  <path d="M0 340c78-42 137-29 196 9 66 42 119 54 187 11 45-29 86-39 129-29v181H0Z" fill="#fffaf0"/>
+  <path d="M0 286c72-29 130-18 190 19 72 45 127 47 194 5 43-27 83-34 128-19v64c-45-15-85-8-128 19-67 42-122 40-194-5-60-37-118-48-190-19Z" fill="#e35d48"/>
+  <circle cx="371" cy="128" r="54" fill="#ffe4a6"/>
+  <path d="M126 128h89l-74 57 29 88-75-55-74 55 29-88-74-57h91l28-86Z" fill="#fffaf0"/>
+  <text x="256" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="74" font-weight="800" fill="#17231f">PH</text>
+</svg>

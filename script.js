@@ -82,3 +82,11 @@ toTopButton.addEventListener("click", () => {
 window.addEventListener("scroll", () => {
   toTopButton.classList.toggle("is-visible", window.scrollY > 600);
 }, { passive: true });
+
+if ("serviceWorker" in navigator && window.location.protocol === "https:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      // The itinerary still works normally if offline caching is unavailable.
+    });
+  });
+}

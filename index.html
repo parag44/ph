@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Philippines Trip Itinerary | May 2026</title>
     <meta
       name="description"
       content="Interactive mobile-friendly itinerary for a Dhaka, Manila, Cebu, Manila, Dhaka Philippines trip in May 2026."
     >
+    <meta name="theme-color" content="#1f7a5a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PH Trip">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -44,6 +52,18 @@
     </header>
 
     <main>
+      <section class="app-install" aria-labelledby="install-title">
+        <div>
+          <p class="section-label">iPhone App Mode</p>
+          <h2 id="install-title">Add this trip to your Home Screen</h2>
+          <p>
+            Open the live link in Safari, tap Share, then choose Add to Home Screen.
+            It will launch like a small trip app and keep the itinerary available offline after your first visit.
+          </p>
+        </div>
+        <a class="install-link" href="https://parag44.github.io/ph/" target="_blank" rel="noopener noreferrer">Open live app</a>
+      </section>
+
       <section class="quick-panel" aria-label="Trip overview">
         <article>
           <span class="panel-kicker">Travel Style</span>
