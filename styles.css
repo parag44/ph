@@ -30,6 +30,21 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+body.app-locked {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body.app-locked .hero,
+body.app-locked main,
+body.app-locked .to-top {
+  display: none;
+}
+
+body:not(.app-locked) .password-screen {
+  display: none;
+}
+
 button,
 a {
   font: inherit;
@@ -37,6 +52,83 @@ a {
 
 button {
   cursor: pointer;
+}
+
+.password-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: max(22px, env(safe-area-inset-top)) 18px max(22px, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, rgba(10, 28, 33, 0.72), rgba(10, 28, 33, 0.38)),
+    url("https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1400&q=80") center / cover;
+}
+
+.password-card {
+  width: min(100%, 440px);
+  padding: 26px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: var(--shadow);
+}
+
+.password-card h1 {
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-size: clamp(2rem, 9vw, 3.2rem);
+  line-height: 0.98;
+}
+
+.password-card p {
+  color: var(--muted);
+}
+
+.password-card label {
+  display: block;
+  margin: 18px 0 8px;
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.password-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.password-row input {
+  min-width: 0;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--ink);
+  font: inherit;
+}
+
+.password-row input:focus-visible {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(31, 122, 90, 0.16);
+  outline: none;
+}
+
+.password-row button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 850;
+}
+
+.password-error {
+  min-height: 1.5em;
+  margin: 10px 0 0;
+  color: var(--coral) !important;
+  font-weight: 750;
 }
 
 .hero {
@@ -576,6 +668,18 @@ main {
 
   .app-install {
     display: grid;
+  }
+
+  .password-card {
+    padding: 22px;
+  }
+
+  .password-row {
+    grid-template-columns: 1fr;
+  }
+
+  .password-row button {
+    width: 100%;
   }
 
   .install-link {

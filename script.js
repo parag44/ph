@@ -1,6 +1,10 @@
 const dayCards = Array.from(document.querySelectorAll(".day-card"));
 const filterButtons = Array.from(document.querySelectorAll(".chip"));
 const toTopButton = document.querySelector(".to-top");
+const passwordForm = document.querySelector("[data-password-form]");
+const passwordError = document.querySelector("[data-password-error]");
+const PASSWORD_HASH = "40c110f873b68a765841be42dfbec4a52139586c32443a4c6d3838d4d0412def";
+const UNLOCK_KEY = "ph-trip-unlocked";
 const placeIcons = {
   cafe: "☕",
   flight: "✈️",
@@ -12,6 +16,46 @@ const placeIcons = {
   photo: "📷",
   stay: "🏨"
 };
+
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(value);
+  const buffer = await crypto.subtle.digest("SHA-256", bytes);
+
+  return Array.from(new Uint8Array(buffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function unlockApp() {
+  document.body.classList.remove("app-locked");
+  localStorage.setItem(UNLOCK_KEY, "yes");
+}
+
+if (localStorage.getItem(UNLOCK_KEY) === "yes") {
+  unlockApp();
+} else {
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#trip-password")?.focus();
+  });
+}
+
+passwordForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const input = passwordForm.elements["trip-password"];
+  const attemptedPassword = input.value.trim();
+  const attemptedHash = await sha256(attemptedPassword);
+
+  if (attemptedHash === PASSWORD_HASH) {
+    passwordError.textContent = "";
+    input.value = "";
+    unlockApp();
+    return;
+  }
+
+  passwordError.textContent = "Wrong passcode. Try again.";
+  input.select();
+});
 
 document.querySelectorAll(".place-link").forEach((link) => {
   const type = link.dataset.type;
@@ -73,6 +117,11 @@ document.querySelector('[data-action="expand-all"]').addEventListener("click", (
 
 document.querySelector('[data-action="collapse-all"]').addEventListener("click", () => {
   dayCards.forEach((card) => setOpen(card, false));
+});
+
+document.querySelector('[data-action="lock-app"]').addEventListener("click", () => {
+  localStorage.removeItem(UNLOCK_KEY);
+  window.location.reload();
 });
 
 toTopButton.addEventListener("click", () => {

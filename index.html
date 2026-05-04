@@ -19,11 +19,30 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body class="app-locked">
+    <section class="password-screen" aria-labelledby="password-title">
+      <form class="password-card" data-password-form>
+        <p class="section-label">Private Trip App</p>
+        <h1 id="password-title">Unlock Philippines itinerary</h1>
+        <p>
+          Enter the trip passcode to open the day-wise plan, maps, and offline app view.
+        </p>
+        <label for="trip-password">Passcode</label>
+        <div class="password-row">
+          <input id="trip-password" name="trip-password" type="password" inputmode="text" autocomplete="current-password" required>
+          <button type="submit">Unlock</button>
+        </div>
+        <p class="password-error" data-password-error role="alert"></p>
+      </form>
+    </section>
+
     <header class="hero">
       <nav class="topbar" aria-label="Trip navigation">
         <a href="#timeline" class="brand">PH 2026</a>
         <div class="nav-actions">
+          <button class="icon-button" type="button" data-action="lock-app" aria-label="Lock app" title="Lock app">
+            <span aria-hidden="true">🔒</span>
+          </button>
           <button class="icon-button" type="button" data-action="expand-all" aria-label="Expand all days" title="Expand all days">
             <span aria-hidden="true">+</span>
           </button>

@@ -1,4 +1,4 @@
-const CACHE_NAME = "ph-trip-v2";
+const CACHE_NAME = "ph-trip-v4";
 const APP_ASSETS = [
   "./",
   "index.html",
